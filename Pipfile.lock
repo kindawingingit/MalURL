@@ -457,17 +457,6 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.0.2"
-        },
-        "xgboost": {
-            "hashes": [
-                "sha256:6b7c34a18474c1b73b5c6dcf1231f5fe102d6f26490a65465e3879048bf1f3d4",
-                "sha256:9502a9ed5c52669c83207380eeaaa3862cbf38b271040c6d5226914e07cf196c",
-                "sha256:ae122406c2c1d2a407c18a49c2a05f9bbbaa3249fd39e91c11cb223d538dba4e",
-                "sha256:ebe36ee21516a37f645bcd1f3ca1247485fe77d96f1c3d605f970c469b6a9015",
-                "sha256:edaad84317a53671069b4477152915c25b4121d997bfa531711f0a18ba1402fe"
-            ],
-            "index": "pypi",
-            "version": "==1.5.0"
         }
     },
     "develop": {}

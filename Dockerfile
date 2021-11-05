@@ -10,12 +10,6 @@ RUN ["pip3", "install", "--upgrade", "pip"]
 
 RUN ["pipenv", "install"]
 
-RUN ["cd", "models"]
-
-RUN ["pipenv", "run", "model.py"] 
-
-RUN ["cd", "../web"]
-
-ENV FLASK_APP app
+ENV FLASK_APP web/app
 
 CMD ["pipenv","run", "flask", "run", "--host=0.0.0.0"]

@@ -1,4 +1,6 @@
 import pandas as pd
+import pickle
+import os
 
 def _convert(data):
 	df = pd.DataFrame(data, columns = ['url'])
@@ -131,4 +133,15 @@ def _convert(data):
 	X = df[['length_of_url', 'number_of_letters', 'number_of_digits','count_of_dotcom', 'count_of_codot', 'count_of_dotnet','count_of_forward_slash', 'count_of_upper_case', 'count_of_lower_case','count_of_dot', 'count_of_dot_info', 'count_of_https','count_of_www_dot', 'count_of_not_alphanumeric', 'count_of_percentage','percentage_to_length_ratio','forwards_slash_to_length_ratio']]
 	
 	return X
+
+def _predict(name):
+	data = [name]
+	X = _convert(data)
+	dir_path = os.path.dirname(__file__)
+	tree = pickle.load(open(dir_path+'/tree.pkl', 'rb'))
+	print("Decision tree : ", end = "")
+	print(tree.predict(X))
+	xgb = pickle.load(open(dir_path+'/xgb.pkl', 'rb'))
+	print("XGBoost : ", end="")
+	print(xgb.predict(X))
 

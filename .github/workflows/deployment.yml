@@ -38,4 +38,4 @@ jobs:
             echo ${{ secrets.PASSWORD }} | sudo -S docker rmi fda
             cd ~/MalURL
             echo ${{ secrets.PASSWORD }} | sudo -S docker build -t fda .
-            echo ${{ secrets.PASSWORD }} | sudo -S docker run --name malurl -p 5000:5000 fda
+            echo ${{ secrets.PASSWORD }} | sudo -S docker run --name malurl -d -p 5000:5000 fda

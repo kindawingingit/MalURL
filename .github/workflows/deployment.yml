@@ -1,0 +1,41 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Deploying to Digital Ocean
+
+on:
+  workflow_run:
+    workflows: ["Requirements Test"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls -la
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: 'placeholder'
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Copying using rsync
+        run: rsync -av ../MalURL ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/aditya/
+      - name: Checking
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.PORT }}
+          script: |
+            whoami
+            echo ${{ secrets.PASSWORD }} | sudo -S docker rm -f malurl
+            echo ${{ secrets.PASSWORD }} | sudo -S docker rmi fda
+            cd ~/MalURL
+            echo ${{ secrets.PASSWORD }} | sudo -S docker build -t fda .
+            echo ${{ secrets.PASSWORD }} | sudo -S docker run --name malurl -p 5000:5000 fda

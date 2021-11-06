@@ -2,6 +2,8 @@
 
 {% block title %}
 MalURL | Detect
+{% endblock %}
+
 {% block head %}
 
 {% endblock %}
@@ -9,7 +11,7 @@ MalURL | Detect
 {% block body %}
         <h1> MalURL </h1> <br>
         <h2> Classifies your url </h2>
-        <form action="/predict">
+        <form action="/predict" method="POST">
             <label>Enter the url : </label>
             <input type="text" name="url">
             <button type="submit">Detect</button>

@@ -2,12 +2,13 @@
 
 {% block title %}
 MalURL | Detect
+{% endblock %}
 {% block head %}
 
 {% endblock %}
 
 {% block body %}
     <p>
-        {{ prediction }}
+        {{ prediction.tree[0] }} {{ prediction.xgb[0] }}
     </p>
 {% endblock %}

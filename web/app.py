@@ -1,26 +1,21 @@
-from flask import Flask, render_template, request
-"""
-import os, sys
-
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
-"""
-
 import sys
+
+from flask import Flask, render_template, request
+
 sys.path.append("..")
 from models.utils import _predict
 
 app = Flask(__name__)
 
-_predict("www.google.com")
 
 @app.route("/")
 def hello_world():
-	return "<p>Hello, World!</p>"
-	
-@app.route("/predict")
+    return render_template("index.html")
+
+
+@app.route("/predict", methods=["POST"])
 def predict():
-	name = request.form.values()
-	print(name)
-	print(type(name))
+    if request.method == "POST":
+        name = request.form["url"]
+        results = _predict(name)
+        return render_template("predict.html", prediction=results)

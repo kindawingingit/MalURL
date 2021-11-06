@@ -1,4 +1,5 @@
-![malurl](https://user-images.githubusercontent.com/54901460/140618363-ce8d81f8-65bc-423a-b43c-576d42e823c2.gif)
+![malurl_2](https://user-images.githubusercontent.com/54901460/140620830-4330f7e6-94ce-4278-8e59-9af1bbbc1bb1.gif)
+
 
 ![test](https://img.shields.io/github/workflow/status/BastaAditya/MalURL/Requirements%20Test)
 ![dependencies](https://img.shields.io/github/pipenv/locked/dependency-version/BastaAditya/MalURL/flask)

@@ -12,18 +12,18 @@ MalURL | Detect
 {% block body %}
         <div class="login-box" id="content">
             <h2>MalURL</h2>
-            <form action="/predict" method="POST">
+            <form autocomplete="off" action="/predict" method="POST">
               <div class="user-box">
                 <input type="text" name="url" required="">
                 <label>Enter the link</label>
               </div>
-              <a>
+              
+              <button type="Submit" onclick="loading();">Detect
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Detect
-              </a>
+               </button>
             </form>
           </div>
 
@@ -39,7 +39,7 @@ MalURL | Detect
             <script>
               function loading(){
                 var loader = document.getElementById("loader");
-                loader.classList.remove("loader");
+                loader.classList.remove("hidden");
                 var content = document.getElementById("content");
                 content.classList.add("hidden");
               }

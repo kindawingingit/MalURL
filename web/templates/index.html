@@ -5,15 +5,24 @@ MalURL | Detect
 {% endblock %}
 
 {% block head %}
-
+<link rel="stylesheet" href="./style.css">
 {% endblock %}
 
 {% block body %}
-        <h1> MalURL </h1> <br>
-        <h2> Classifies your url </h2>
-        <form action="/predict" method="POST">
-            <label>Enter the url : </label>
-            <input type="text" name="url">
-            <button type="submit">Detect</button>
-        </form>
+        <div class="login-box">
+            <h2>MalURL</h2>
+            <form action="/predict" method="POST">
+              <div class="user-box">
+                <input type="text" name="url" required="">
+                <label>Enter the link</label>
+              </div>
+              <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Detect
+              </button>
+            </form>
+          </div>
 {% endblock %}

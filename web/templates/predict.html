@@ -4,11 +4,14 @@
 MalURL | Detect
 {% endblock %}
 {% block head %}
-
+<link rel="stylesheet" href="./style.css">
 {% endblock %}
 
 {% block body %}
-    <p>
-        {{ prediction.tree[0] }} {{ prediction.xgb[0] }}
-    </p>
+    <div class="login-box">
+        <h2>MalURL</h2>
+        <p>
+            {{ prediction.tree[0] }} {{ prediction.xgb[0] }}    
+        </p>
+    </div>
 {% endblock %}

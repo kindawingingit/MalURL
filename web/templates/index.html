@@ -6,23 +6,42 @@ MalURL | Detect
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='loader.css') }}">
 {% endblock %}
 
 {% block body %}
-        <div class="login-box">
+        <div class="login-box" id="content">
             <h2>MalURL</h2>
             <form action="/predict" method="POST">
               <div class="user-box">
                 <input type="text" name="url" required="">
                 <label>Enter the link</label>
               </div>
-              <button type="submit">
+              <a>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Detect
-              </button>
+              </a>
             </form>
           </div>
+
+          <div class="container hidden" id="loader">
+            <div class="flex">
+            <div class="loader">
+            </div>
+            </div>
+            <div class="load-text">
+            Loading...
+            </div>
+            </div>
+            <script>
+              function loading(){
+                var loader = document.getElementById("loader");
+                loader.classList.remove("loader");
+                var content = document.getElementById("content");
+                content.classList.add("hidden");
+              }
+            </script>
 {% endblock %}

@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> MalURL </title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
+{% extends 'base.html' %}
+
+{% block title %}
+MalURL | Detect
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
         <h1> MalURL </h1> <br>
         <h2> Classifies your url </h2>
-        <form action=""></form>
-    </body>
-</html>
+        <form action="/predict">
+            <label>Enter the url : </label>
+            <input type="text" name="url">
+            <button type="submit">Detect</button>
+        </form>
+{% endblock %}

@@ -9,8 +9,8 @@ numpy = "*"
 pandas = "*"
 sklearn = "*"
 mlxtend = "*"
-xgboost = "*"
 seaborn = "*"
+xgboost = "*"
 
 [dev-packages]
 

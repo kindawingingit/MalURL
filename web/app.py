@@ -19,3 +19,4 @@ def predict():
         name = request.form["url"]
         results = _predict(name)
         return render_template("predict.html", prediction=results)
+        print(results)

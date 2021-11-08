@@ -177,4 +177,8 @@ def _predict(name):
     results["tree"] = tree.predict(X)
     xgb_model = pickle.load(open(dir_path + "/xgb.pkl", "rb"))
     results["xgb"] = xgb_model.predict(X)
+    lgb_model = pickle.load(open(dir_path + "/lgb.pkl", "rb"))
+    results["lgb"] = lgb_model.predict(X)
+    rfc_model = pickle.load(open(dir_path + "/rfc.pkl", "rb"))
+    results["rfc"] = rfc_model.predict(X)
     return results

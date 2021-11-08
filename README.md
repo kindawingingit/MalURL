@@ -2,6 +2,7 @@
 
 
 ![test](https://img.shields.io/github/workflow/status/BastaAditya/MalURL/Requirements%20Test)
+![status](https://img.shields.io/website?down_message=down&up_message=up&url=https%3A%2F%2Fmaliurl.herokuapp.com%2F)
 ![dependencies](https://img.shields.io/github/pipenv/locked/dependency-version/BastaAditya/MalURL/flask)
 ![repo](https://img.shields.io/github/repo-size/BastaAditya/MalURL)
 ![count](https://img.shields.io/tokei/lines/github/BastaAditya/MalURL)
@@ -9,8 +10,7 @@
 ![last](https://img.shields.io/github/last-commit/BastaAditya/MalURL)
 
 # MalURL
-MalURL detects whether website links are malicious or not by applying various machine learning algorithms. MalURL uses  machine learning algorithms - Decision Tree and XGBoost on detecting whether a link is malicious or benign or phishing.
-
+MalURL detects whether website links are malicious or not by applying various machine learning algorithms. MalURL uses  machine learning algorithms - Decision Tree and XGBoost on detecting whether a link is malicious or benign or phishing. The web app is live at https://maliurl.herokuapp.com/
 # Prerequisites :
   Docker
 

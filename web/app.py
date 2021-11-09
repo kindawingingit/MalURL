@@ -7,7 +7,6 @@ from models.utils import _predict
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def hello_world():
     return render_template("index.html")
@@ -19,3 +18,4 @@ def predict():
         name = request.form["url"]
         results = _predict(name)
         return render_template("predict.html", prediction=results)
+        

@@ -11,6 +11,8 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.tree import DecisionTreeClassifier
+from lightgbm import LGBMClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 df = pd.read_csv("malicious_phish.csv")
 
@@ -204,3 +206,13 @@ pickle.dump(decision_tree, open("tree.pkl", "wb"))
 model = xgb.XGBClassifier(n_estimators=1000)
 model.fit(X_train, y_train)
 pickle.dump(model, open("xgb.pkl", "wb"))
+
+# LGB
+lgb = LGBMClassifier(objective='multiclass',boosting_type= 'gbdt',n_jobs = 5, silent = True, random_state=5)
+lgb.fit(X_train, y_train)
+pickle.dump(lgb, open("lgb.pkl", "wb"))
+
+#Random Forrest
+rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
+pickle.dump(model, open("rfc.pkl", "wb"))

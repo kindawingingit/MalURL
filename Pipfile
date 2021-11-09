@@ -11,6 +11,7 @@ sklearn = "*"
 mlxtend = "*"
 seaborn = "*"
 xgboost = "*"
+lightgbm = "*"
 
 [dev-packages]
 

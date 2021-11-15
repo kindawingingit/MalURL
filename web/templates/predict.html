@@ -9,9 +9,18 @@ MalURL | Detect
 
 {% block body %}
     <div class="login-box">
-        <h2>MalURL</h2>
+        <h2>MalURL </h2>
         <h2>
-           Decision tree -  {{ prediction.tree[0] }}  XGBoost - {{ prediction.xgb[0] }}    
+           Decision tree -  {{ prediction.tree[0] }}   
         <h2>
+        <h2>
+            XGBoost - {{ prediction.xgb[0] }} 
+        </h2>   
+        <h2>
+            LGB - {{ prediction.lgb[0]}} 
+        </h2>
+        <h2>
+            Random Forest - {{ prediction.rfc[0]}}
+        </h2> 
     </div>
 {% endblock %}

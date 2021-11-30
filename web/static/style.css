@@ -21,7 +21,63 @@ body {
   border-radius: 10px;
 }
 
+
+.login-box-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1200px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box-2 .stuff {
+  width: 50%;
+  float: left;
+}
+
+.login-box-2 h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box-2 p {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box-2 h3 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+
+
 .login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box p {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box h3 {
   margin: 0 0 30px;
   padding: 0;
   color: #fff;

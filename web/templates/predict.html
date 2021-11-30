@@ -11,7 +11,7 @@ MalURL | Detect
     <div class="login-box">
         <h2>MalURL </h2>
         <h2>
-           Decision tree -  {{ prediction.tree[0] }}   
+           Decision tree -  {{ prediction.tree[0] }}
         <h2>
         <h2>
             XGBoost - {{ prediction.xgb[0] }} 
@@ -22,5 +22,8 @@ MalURL | Detect
         <h2>
             Random Forest - {{ prediction.rfc[0]}}
         </h2> 
-    </div>
+        <form action="/metric">
+            <button type="submit">Metric</button>
+        </form>
+        </div>
 {% endblock %}

@@ -13,8 +13,10 @@ from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from lightgbm import LGBMClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix, f1_score, accuracy_score ,precision_score, recall_score
 
-df = pd.read_csv("malicious_phish.csv")
+
+df = pd.read_csv("urldata.csv", low_memory=False)
 
 length_of_url = []  # length of url
 number_of_letters = []  # number of alphanumeric characters
@@ -171,7 +173,7 @@ X = df[
     ]
 ]
 
-y = df["type"]
+y = df["label"]
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(
@@ -188,6 +190,9 @@ for depth in range(1, len(X.columns)):
     accuracy_list.append(decision_tree.score(X_test, y_test))
     depth_list.append(depth)
 
+
+
+score = {}
 # DECISION TREE
 decision_tree = DecisionTreeClassifier(max_depth=17)
 cv_score = cross_val_score(decision_tree, X_train, y_train, cv=5)
@@ -199,20 +204,70 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 decision_tree = DecisionTreeClassifier(max_depth=17)
 decision_tree.fit(X_train, y_train)
-pickle.dump(decision_tree, open("tree.pkl", "wb"))
-
+y_hat = decision_tree.predict(X_test)
+#pickle.dump(decision_tree, open("tree.pkl", "wb"))
+acc = accuracy_score(y_test, y_hat)
+pre_dt = precision_score(y_test, y_hat, average='macro')
+recall_dt = recall_score(y_test, y_hat, average='macro')
+score["dt"] = []
+score["dt"].append(recall_dt)
+score["dt"].append(pre_dt)
+score["dt"].append(acc)
 
 # XGBOOSTER
 model = xgb.XGBClassifier(n_estimators=1000)
 model.fit(X_train, y_train)
-pickle.dump(model, open("xgb.pkl", "wb"))
+y_xgb = model.predict(X_test)
+#pickle.dump(model, open("xgb.pkl", "wb"))
+acc_xgb = accuracy_score(y_test, y_xgb)
+pre_xgb = precision_score(y_test, y_xgb, average='macro')
+recall_xgb = recall_score(y_test, y_xgb, average='macro')
+score["xgb"] = []
+score["xgb"].append(recall_xgb)
+score["xgb"].append(pre_xgb)
+score["xgb"].append(acc_xgb)
 
 # LGB
-lgb = LGBMClassifier(objective='multiclass',boosting_type= 'gbdt',n_jobs = 5, silent = True, random_state=5)
+lgb = LGBMClassifier(objective='binary',boosting_type= 'gbdt',n_jobs = 5, silent = True, random_state=5)
 lgb.fit(X_train, y_train)
-pickle.dump(lgb, open("lgb.pkl", "wb"))
+y_lgb = lgb.predict(X_test)
+#pickle.dump(lgb, open("lgb.pkl", "wb"))
+acc_lgb = accuracy_score(y_test, y_lgb)
+pre_lgb = precision_score(y_test, y_lgb, average='macro')
+recall_lgb = recall_score(y_test, y_lgb, average='macro')
+score["lgb"] = []
+score["lgb"].append(recall_lgb)
+score["lgb"].append(pre_lgb)
+score["lgb"].append(acc_lgb)
 
 #Random Forrest
 rfc = RandomForestClassifier()
 rfc.fit(X_train, y_train)
-pickle.dump(model, open("rfc.pkl", "wb"))
+y_rfc = rfc.predict(X_test)
+#pickle.dump(rfc, open("rfc.pkl", "wb"))
+acc_rfc = accuracy_score(y_test, y_rfc)
+pre_rfc = precision_score(y_test, y_rfc, average='macro')
+recall_rfc = recall_score(y_test, y_rfc, average='macro')
+score["rfc"] = []
+score["rfc"].append(recall_rfc)
+score["rfc"].append(pre_rfc)
+score["rfc"].append(acc_rfc)
+
+pickle.dump(score, open("metrics.pkl","wb"))
+
+# END HERE
+#def metrics():
+    #f1_score = f1_score(y_test, y_hat, average='macro')
+
+
+
+
+#score.append(f1_score)
+
+# print(format(f1_score))
+# print(accuarcy_score)
+# print(precision_score)
+# print(recall_score)
+
+
+#metrics()

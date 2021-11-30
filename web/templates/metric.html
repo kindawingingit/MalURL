@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MalURL | Detect
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="login-box-2">
+        
+        <p> These results(scores) are based on the test and train data used to build the model</p>
+       
+        <div class="stuff">
+        <h2>Decision Tree</h2>
+        <h3>accuracy score - {{ metric['dt'][2] }}</h3>
+        <h3>precision - {{ metric['dt'][1] }}</h3>
+        <h3>recall - {{ metric['dt'][0] }}</h3>
+        </div>
+        <div class="stuff">
+        <h2>XGBoost</h2>
+        <h3>accuracy score - {{ metric['xgb'][2] }}</h3>
+        <h3>precision - {{ metric['xgb'][1] }}</h3>
+        <h3>recall - {{ metric['xgb'][0] }}</h3>
+        </div>
+        
+        <div class="stuff">
+        <h2>LGB</h2>
+        <h3>accuracy score - {{ metric['lgb'][2] }}</h3>
+        <h3>precision - {{ metric['lgb'][1] }}</h3>
+        <h3>recall - {{ metric['lgb'][0] }}</h3>
+        </div>
+        <div class="stuff">
+        <h2>Random Forest</h2>
+        <h3>accuracy score - {{ metric['rfc'][2] }}</h3>
+        <h3>precision - {{ metric['rfc'][1] }}</h3>
+        <h3>recall - {{ metric['rfc'][0] }}</h3>
+        </div>
+    </div>
+{% endblock %}

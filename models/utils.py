@@ -182,3 +182,8 @@ def _predict(name):
     rfc_model = pickle.load(open(dir_path + "/rfc.pkl", "rb"))
     results["rfc"] = rfc_model.predict(X)
     return results
+
+def _metrics():
+    dir_path = os.path.dirname(__file__)
+    source = pickle.load(open(dir_path + "/metrics.pkl", "rb"))
+    return source
